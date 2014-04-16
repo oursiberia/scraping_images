@@ -1,0 +1,11 @@
+extends layout
+
+block content
+  h1= title
+  p source: #{url}
+  form(action="/scrape-images", method="GET")
+   input(type="text", name="url" placeholder="enter a URL")
+   input(type="submit", value="submit")
+  div
+   for image in images
+    img(src= image)
