@@ -24,7 +24,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(app.router);
 
 app.get('/', function(req, res){
-  res.render('index', { title: 'scraping stuff', images: [] })
+  res.render('index', { title: 'scraping stuff', images: {} })
 });
 
 app.get('/scrape-images', function(req, res){
@@ -36,8 +36,9 @@ app.get('/scrape-images', function(req, res){
       $('img').each(function(i, element){
         var src = element.attribs.src;
         var alt = element.attribs.alt;
-        // var isImage = (/\.(gif|jpg|jpeg|tiff|png)$/i);
-        // && isImage.test(src);
+        // checks whether pathname ends in image file extension
+          // var isImage = (/\.(gif|jpg|jpeg|tiff|png)$/i);
+            // isImage.test(src); => returns boolean
         if (src) {
           var image;
           if (src.indexOf('http') == -1

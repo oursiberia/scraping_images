@@ -1,7 +1,6 @@
 extends layout
 
 block content
-  h1= title
   p source: #{url}
   form(action="/scrape-images", method="GET")
    input(type="text", name="url" placeholder="enter a URL")
@@ -10,5 +9,5 @@ block content
    ul
     for image in images
      li
+      div(style="background:url(#{image.url}) no-repeat center center; background-size: cover;")
       h3 #{image.alt}
-      img(src=image.url)
