@@ -1,13 +1,14 @@
 extends layout
 
 block content
-  p source: #{url}
-  form(action="/scrape-images", method="GET")
-   input(type="text", name="url" placeholder="enter a URL")
-   input(type="submit", value="submit")
-  div
-   ul
-    for image in images
-     li
-      div(style="background:url(#{image.url}) no-repeat center center; background-size: cover;")
-      h3 #{image.alt}
+  div(id='container')
+    p source: #{url}
+    form(action="/scrape-images", method="GET")
+     input(type="text", name="url" placeholder="enter a URL")
+     input(type="submit", value="submit")
+    div
+     ul
+      for image in images
+       li
+        div(class="item", style="background:url(#{image.url}) no-repeat center center; background-size: cover;")
+        h3 #{image.alt}

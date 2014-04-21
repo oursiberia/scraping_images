@@ -7,6 +7,7 @@ var cheerio = require('cheerio');
 var request = require('request');
 var path = require('path');
 var url = require('url');
+var sizeOf = require('image-size');
 
 var routes = require('./routes');
 
@@ -29,10 +30,10 @@ app.get('/', function(req, res){
 
 app.get('/scrape-images', function(req, res){
   var reqUrl = req.query.url;
+  var images = [];
   request(reqUrl, function (error, response, html){
     if (!error && response.statusCode == 200){
       var $ = cheerio.load(html);
-      var images = {};
       $('img').each(function(i, element){
         var src = element.attribs.src;
         var alt = element.attribs.alt;
@@ -40,6 +41,23 @@ app.get('/scrape-images', function(req, res){
           // var isImage = (/\.(gif|jpg|jpeg|tiff|png)$/i);
             // isImage.test(src); => returns boolean
         if (src) {
+          // trying the image-size module
+
+          // im.identify(src, function(err, features){
+          //   if (err) throw err
+          //   console.log(features);
+          // })
+          // request.get(src, function(error, response, body){
+          //   console.log(body);
+          // })
+          // testing size filter
+          // should be >= 40000
+          // var newImg = new Image();
+          // newImg.src = src;
+          // var height = newImg.height;
+          // var width = newImg.width;
+          // console.log('image area: ' + (height * width));
+
           var image;
           if (src.indexOf('http') == -1
             && src.indexOf('https') == -1
@@ -53,11 +71,31 @@ app.get('/scrape-images', function(req, res){
           } else {
             image = { url: src, alt: alt };
           }
-          images[i] = image;
+          images.push(image);
         }
       });
-      res.render('index', { title: 'scraping stuff', url: reqUrl, images: images })
-    }
+    };
+
+    // // testing image-size module
+    // $(images).each(function(i, element){
+    //   if (element.url){
+    //     var imgUrl = element.url;
+
+    //     http.get(imgUrl, function (response, err) {
+    //       if (!err && response.statusCode == 200){
+    //         var chunks = [];
+    //         response.on('data', function (chunk) {
+    //           chunks.push(chunk);
+    //         }).on('end', function() {
+    //           var buffer = Buffer.concat(chunks);
+    //           console.log(imgUrl + ": " + sizeOf(buffer));
+    //         });
+    //       }
+    //     });
+    //   }
+    // });
+
+    res.render('index', { title: 'scraping stuff', url: reqUrl, images: images })
   });
 });
 

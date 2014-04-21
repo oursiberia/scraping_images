@@ -6,7 +6,6 @@ body {
 }
 
 input[type=text]{
-	text-align: center;
 	color: #181818;
 	padding: 5px;
 	font-size: 16pt;
@@ -19,7 +18,16 @@ input[type=text]{
 	outline: none;
 }
 
+input[type=text]:after{
+	content: "hi";
+	background: url(/images/search.svg);
+	display: inline-block;
+	height: 40px;
+	width: 40px;
+}
+
 input[type="submit"]{
+	text-align: left;
 	display: block;
 	width: 510px;
 	background: #FFFFFF;
