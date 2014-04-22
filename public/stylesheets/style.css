@@ -1,43 +1,43 @@
 body {
-	color: #181818;
-	background-color: #bfbdb0;
+	color: #FFFFFF;
+	background-color: #BFBDB0;
 	padding: 50px;
-	font: 16pt "Helvetica";
+	font: 16pt "HelveticaNeue-Light";
+	font-weight: 300;
+	letter-spacing: 1px;
 }
 
-input[type=text]{
-	color: #181818;
+input {
+	width: 100%;
+	color: #BFBDB0;
 	padding: 5px;
 	font-size: 16pt;
-	font-family: 'Helvetica';
+	font-family: 'HelveticaNeue-Light';
+	letter-spacing: 1px;
 	background-color: #FFFFFF;
+	background: #FFFFFF url(/images/search.svg) left no-repeat;
+	padding-left: 40px;
 	height: 40px;
 	width: 500px;
 	border: none;
+	border-left: 10px solid #FFFFFF;
 	border-radius: 4px;
 	outline: none;
 }
 
-input[type=text]:after{
-	content: "hi";
-	background: url(/images/search.svg);
-	display: inline-block;
-	height: 40px;
-	width: 40px;
-}
-
-input[type="submit"]{
-	text-align: left;
-	display: block;
-	width: 510px;
-	background: #FFFFFF;
-	border: none;
-	border-radius: 4px;
-}
-
 ::-webkit-input-placeholder {
-   color: #060606;
+   color: #BFBDB0;
 }
+
+input:focus{
+	color: #73716A;
+	background: #FFFFFF url(/images/search2.svg) left no-repeat;
+}
+
+input:focus::-webkit-input-placeholder {
+	color: #73716A;
+}
+
 
 ul {
 	list-style-type: none;
@@ -75,10 +75,12 @@ li div:hover:after{
 }
 
 h3 {
+	font-weight: 300;
 	max-width: 185px;
-	font-size: .6em;
-	letter-spacing: .01em;
-	/*text-transform: uppercase;*/
-	padding: 0;
+	font-size: .5em;
+	text-align: center;
+/*	letter-spacing: .05em;
+*/	/*text-transform: uppercase;*/
+	padding: 4px;
 	margin: 0;
 }
