@@ -12,6 +12,7 @@ input {
 	padding: 5px;
 	padding-left: 40px;
 	height: 40px;
+	width: 55%;
 	font-size: 16pt;
 	font-family: 'HelveticaNeue-Light';
 	letter-spacing: 1px;
@@ -39,13 +40,15 @@ input:focus::-webkit-input-placeholder {
 
 ul {
 	list-style-type: none;
-	padding-left: 0;
+	padding-left: 0px;
+	padding-top: 15px;
 }
 
 li {
 	float: left;
 	width: 215px;
 	height: 215px;
+	padding: 0px 15px 15px 0px;
 }
 
 li div {
@@ -55,14 +58,19 @@ li div {
 }
 
 li div:after {
-	content: "";
+	content: attr(data-content);
+	color: #622172;
+	font-size: .4em;
+	padding-top: 4px;
+	padding-left: 4px;
 	display: block;
-	height: 185px;
-	width: 185px;
+	height: 181px;
+	width: 181px;
 	border-radius: 4px;
 }
 
 li div:hover:after{
+	content: attr(data-content);
 	background: rgba(136,16,7, 0.4);
 }
 

@@ -10,6 +10,7 @@ $(document).ready(function(){
 		image.onload = function(){
 			if (this.width * this.height > 40000){
 				$(me).parent().css('display', 'inline-block');
+				$(me).attr('data-content', this.width + ' x ' + this.height);
 			}
 		};
 	});
