@@ -71,6 +71,7 @@ li div:after {
 
 li div:hover:after{
 	content: attr(data-content);
+	color: #FFFFFF;
 	background: rgba(136,16,7, 0.4);
 }
 
