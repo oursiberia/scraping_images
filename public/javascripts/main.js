@@ -1,5 +1,5 @@
 $(document).ready(function(){
-	console.log('hey there');
+	console.log('mainjs here');
 
 	$('li div').each(function(i, element){
 		var me = this;
@@ -9,8 +9,8 @@ $(document).ready(function(){
 		image.src = bgUrl;
 		image.onload = function(){
 			if (this.width * this.height > 40000){
-				$(me).parent().css('display', 'inline-block');
-				$(me).attr('data-content', this.width + ' x ' + this.height);
+				$(me).parent().show();
+				$(me).attr('data-dimensions', this.width + ' x ' + this.height);
 			}
 		};
 	});

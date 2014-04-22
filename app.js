@@ -7,7 +7,6 @@ var cheerio = require('cheerio');
 var request = require('request');
 var path = require('path');
 var url = require('url');
-var sizeOf = require('image-size');
 
 var routes = require('./routes');
 
@@ -30,6 +29,7 @@ app.get('/', function(req, res){
 
 app.get('/scrape-images', function(req, res){
   var reqUrl = req.query.url;
+  // append http:// if a website is inputted without it
   var images = [];
   request(reqUrl, function (error, response, html){
     if (!error && response.statusCode == 200){

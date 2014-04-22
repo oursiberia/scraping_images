@@ -7,6 +7,6 @@ block content
     div
      ul
       for image in images
-       li(style="display:none;")
+       li
         div(class="item", style="background:url(#{image.url}) no-repeat center center; background-size: cover;")
         h3 #{image.alt}

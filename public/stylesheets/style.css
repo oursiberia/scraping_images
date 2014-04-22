@@ -45,6 +45,7 @@ ul {
 }
 
 li {
+	display: none;
 	float: left;
 	width: 215px;
 	height: 215px;
@@ -58,7 +59,7 @@ li div {
 }
 
 li div:after {
-	content: attr(data-content);
+	content: attr(data-dimensions);
 	color: #622172;
 	font-size: .4em;
 	padding-top: 4px;
@@ -70,7 +71,7 @@ li div:after {
 }
 
 li div:hover:after{
-	content: attr(data-content);
+	content: attr(data-dimensions);
 	color: #FFFFFF;
 	background: rgba(136,16,7, 0.4);
 }
