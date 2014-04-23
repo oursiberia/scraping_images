@@ -1,12 +1,22 @@
 extends layout
 
 block content
-  div(id='container')
-    form(action="/scrape-images", method="GET")
-     input(type="text", name="url", placeholder=(url ? url : ""))
-    div
-     ul
-      for image in images
-       li
-        div(class="item", style="background:url(#{image.url}) no-repeat center center; background-size: cover;")
-        h3 #{image.alt}
+  div(class='container')
+    form(action='/scrape-images', method='GET')
+     input(type='text', name='url', placeholder=(url ? url : ''))
+    div(class='content')
+      div(class='instructions')
+       p To scrape images from a product page, copy its URL from your nav bar, paste it above, and hit "enter."
+       ul Notes:
+        li Your input must be a valid URL (i.e., begin with "http://" and end with ".com," ".org," etc.)
+         p This one's a good sample: http://www.urbanoutfitters.com/urban/catalog/category.jsp?id=W_APP_BLOUSES
+        li The scraper currently filters out images with an area smaller than 40k pixels, or 200x200. These parameters can be optimized upon further testing.
+      ul(class='results')
+       for image in images
+        li(class='item-container')
+         div(class='item', style='background:url(#{image.url}) no-repeat center center; background-size: cover;')
+         h3 #{image.alt}
+
+         //- p http://www.urbanoutfitters.com/urban/catalog/category.jsp?id=A_DECORATE
+         //- p http://www.urbanoutfitters.com/urban/catalog/category.jsp?id=W_APP_BLOUSES
+         //- it filters out images with an area smaller than 40k pixels, or 200x200.

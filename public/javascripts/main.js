@@ -1,7 +1,11 @@
 $(document).ready(function(){
 	console.log('mainjs here');
 
-	$('li div').each(function(i, element){
+	if ($('.results').html().length == 0){
+		$('.instructions').show();
+	}
+
+	$('.item').each(function(i, element){
 		var me = this;
 		var bg = $(me).css('background-image');
 		var bgUrl = bg.replace(/"/g,"").replace(/url\(|\)$/ig, "");

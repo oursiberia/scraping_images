@@ -29,7 +29,7 @@ app.get('/', function(req, res){
 
 app.get('/scrape-images', function(req, res){
   var reqUrl = req.query.url;
-  // append http:// if a website is inputted without it
+  // TODO: append http:// if a website is inputted without it
   var images = [];
   request(reqUrl, function (error, response, html){
     if (!error && response.statusCode == 200){

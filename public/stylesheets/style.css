@@ -44,7 +44,12 @@ ul {
 	padding-top: 15px;
 }
 
-li {
+.instructions {
+	display: none;
+	font-size: 1em;
+}
+
+.item-container {
 	display: none;
 	float: left;
 	width: 215px;
@@ -52,13 +57,13 @@ li {
 	padding: 0px 15px 15px 0px;
 }
 
-li div {
+.item {
 	width: 185px;
 	height: 185px;
 	border-radius: 4px;
 }
 
-li div:after {
+.item:after {
 	content: attr(data-dimensions);
 	color: #622172;
 	font-size: .4em;
@@ -70,7 +75,7 @@ li div:after {
 	border-radius: 4px;
 }
 
-li div:hover:after{
+.item:hover:after {
 	content: attr(data-dimensions);
 	color: #FFFFFF;
 	background: rgba(136,16,7, 0.4);
