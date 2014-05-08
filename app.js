@@ -27,22 +27,29 @@ app.get('/', function(req, res){
   res.render('index', { title: 'scraping stuff', images: {} })
 });
 
+
+// main scraping function
 app.get('/scrape-images', function(req, res){
+  // takes the 'url' attribute from the 'req' object passed through the form in 'index'
   var reqUrl = req.query.url;
-  // TODO: append http:// if a website is inputted without it
+  // empty array to store image URLs
   var images = [];
+  // uses the 'request' module to load up the user-inputted site
   request(reqUrl, function (error, response, html){
     if (!error && response.statusCode == 200){
+      // passes HTML to the cheerio module for parsing
       var $ = cheerio.load(html);
+      // grabs each <img> tag on the page
       $('img').each(function(i, element){
+        // grabs 'src' attribute
         var src = element.attribs.src;
+        // grabs 'alt' tag
         var alt = element.attribs.alt;
-        // checks whether pathname ends in image file extension
-          // var isImage = (/\.(gif|jpg|jpeg|tiff|png)$/i);
-            // isImage.test(src); => returns boolean
+        // checks whether the <img> tag in fact has an 'src' attribute
         if (src) {
 
           var image;
+          // checks for critical img URL components
           if (src.indexOf('http') == -1
             && src.indexOf('https') == -1
             && src.indexOf('www.') == -1
@@ -51,15 +58,18 @@ app.get('/scrape-images', function(req, res){
             && src.indexOf('.net') == -1
             && src.indexOf('.io') == -1)
           {
+            // creates an image object with 'url' and 'alt' attributes
+            // url module corrects for broken or relative URLs
             image = { url: url.resolve(reqUrl, src), alt: alt };
           } else {
             image = { url: src, alt: alt };
           }
+          // pushes the 'image' object into our existing array
           images.push(image);
         }
       });
     };
-
+    // sends the data off to 'index.jade'
     res.render('index', { title: 'scraping stuff', url: reqUrl, images: images })
   });
 });
