@@ -15,9 +15,6 @@ $(document).ready(function(){
 			} else {
 				$(me).parent().remove();
 			}
-			// if ($('.results').is(':empty')){
-			// 	$('.instructions').show();
-			// }
 		};
 	});
 
